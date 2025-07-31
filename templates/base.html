@@ -17,7 +17,7 @@
   </header>
 
   <main class="container mx-auto p-4">
-    {{ template "content" . }}
+      {{ block "content" . }}{{ end }}
   </main>
 
   <footer class="text-center text-sm p-4 text-gray-500">

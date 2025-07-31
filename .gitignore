@@ -16,4 +16,5 @@ Thumbs.db
 
 # Optional: ignore resume unless version-controlled
 static/resume.pdf
+dist/static/resume.pdf
 inspo.MD

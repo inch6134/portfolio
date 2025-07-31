@@ -1,0 +1,19 @@
+# Go
+/bin/
+/*.exe
+*.log
+
+# IDE/editor
+.vscode/
+*.swp
+.DS_Store
+
+# OS
+Thumbs.db
+
+# Generated files
+*.out
+
+# Optional: ignore resume unless version-controlled
+static/resume.pdf
+inspo.MD

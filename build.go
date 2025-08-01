@@ -7,28 +7,24 @@ import (
 	"path/filepath"
 )
 
+// static page info struct declaration
 var pages = []struct {
 	File 		string
 	Title		string
 	Tmpl 		string
 	Output 	string
 } {
-		{"index.html", "Home", "index.html", "dist/index.html"},
-		{"about.html", "About Me", "about.html", "dist/about.html"},
-		{"projects.html", "Projects", "projects.html", "dist/projects.html"},
-		{"contact.html", "Contact", "contact.html", "dist/contact.html"},
-		{"404.html", "Not Found", "404.html", "dist/404.html"},
+		{"index.html", "Home", "index.html", "docs/index.html"},
+		{"about.html", "About Me", "about.html", "docs/about.html"},
+		{"projects.html", "Projects", "projects.html", "docs/projects.html"},
+		{"contact.html", "Contact", "contact.html", "docs/contact.html"},
+		{"404.html", "Not Found", "404.html", "docs/404.html"},
 }
 
 func main() {
-	tmpls, err := template.ParseGlob("templates/*.html")
+	err := os.MkdirAll("docs", 0755)
 	if err != nil {
-		log.Fatal("Failed to parse templates:", err)
-	}
-
-	err = os.MkdirAll("dist", 0755)
-	if err != nil {
-		log.Fatal("Failed to create dist directory:", err)
+		log.Fatal("Failed to create docs directory:", err)
 	}
 
 	for _, page := range pages {
@@ -37,6 +33,14 @@ func main() {
 			log.Fatalf("Failed to create file %s: %v", page.Output, err)
 		}
 		defer f.Close()
+
+		tmpls, err := template.ParseFiles(
+			filepath.Join("templates", "base.html"),
+			filepath.Join("templates", page.Tmpl),
+		)
+		if err != nil {
+				log.Fatal("Failed to parse templates:", err)
+		}
 
 		err = tmpls.ExecuteTemplate(f, page.Tmpl, map[string]any{
 			"Title": page.Title,
@@ -48,10 +52,10 @@ func main() {
 	}
 
 	// Copy static files
-	copyStatic("static", "dist/static")
+	copyStatic("static", "docs/static")
 }
 
-// Copies static/ → dist/static/
+// Copies static/ → docs/static/
 func copyStatic(src, dest string) {
 	err := os.MkdirAll(dest, 0755)
 	if err != nil {

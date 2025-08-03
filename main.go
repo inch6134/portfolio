@@ -46,18 +46,18 @@ func main() {
 			log.Fatalf("Error parsing templates: %v", err)
 		}
 	}
+	mux := http.NewServeMux()
 	
-	http.HandleFunc("/", homeHandler)
-	http.HandleFunc("/about", aboutHandler)
-	http.HandleFunc("/projects", projectsHandler)
-	http.HandleFunc("/404", fourohfourHandler)
+	mux.HandleFunc("/", homeHandler)
+	mux.HandleFunc("/about", aboutHandler)
+	mux.HandleFunc("/projects", projectsHandler)
 
 	if !isDevMode {
 		log.Println("Server starting on :3000")
-		log.Fatal(http.ListenAndServe(":3000", nil))
+		log.Fatal(http.ListenAndServe(":3000", mux))
 	} else {
 		log.Println("Server starting on :8080")
-		log.Fatal(http.ListenAndServe(":8080", nil))
+		log.Fatal(http.ListenAndServe(":8080", mux))
 	}
 }
 
@@ -118,7 +118,14 @@ func renderTemplate(w http.ResponseWriter, name string, data any)  {
 	}
 }
 
+// func rootHandler(w http.ResponseWriter, r *http.Request) {
+// 	http.Redirect(w, r, "/home", http.StatusFound)
+// }
 func homeHandler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		notFoundHandler(w, r) // If not root and no other route matches, serve 404
+ 		return
+ 	}
 	p := Page{Title:"Home"}
 	renderTemplate(w, "index", &p)
 }
@@ -130,8 +137,9 @@ func projectsHandler(w http.ResponseWriter, r *http.Request) {
 	p := Page{Title:"Projects"}
 	renderTemplate(w, "projects", &p)
 }
-func fourohfourHandler(w http.ResponseWriter, r *http.Request) {
+func notFoundHandler(w http.ResponseWriter, r *http.Request) {
 	p := Page{Title:"404 Not Found"}
+	w.WriteHeader(http.StatusNotFound)
 	renderTemplate(w, "404", &p)
 }
 

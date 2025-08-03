@@ -15,10 +15,9 @@ var pages = []struct {
 	Output 	string
 } {
 		{"index.html", "Home", "index.html", "docs/index.html"},
-		{"about.html", "About Me", "about.html", "docs/about.html"},
+		{"about.html", "About", "about.html", "docs/about.html"},
 		{"projects.html", "Projects", "projects.html", "docs/projects.html"},
-		{"contact.html", "Contact", "contact.html", "docs/contact.html"},
-		{"404.html", "Not Found", "404.html", "docs/404.html"},
+		{"404.html", "404 Not Found", "404.html", "docs/404.html"},
 }
 
 func main() {
@@ -42,9 +41,7 @@ func main() {
 				log.Fatal("Failed to parse templates:", err)
 		}
 
-		err = tmpls.ExecuteTemplate(f, page.Tmpl, map[string]any{
-			"Title": page.Title,
-		})
+		err = tmpls.ExecuteTemplate(f, page.Tmpl, page)
 		if err != nil {
 			log.Fatalf("Failed to render %s: %v", page.File, err)
 		}

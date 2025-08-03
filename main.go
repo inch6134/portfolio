@@ -8,7 +8,11 @@ import (
 	"path/filepath"
 )
 
-func renderTemplate(w http.ResponseWriter, name string, data any)  {
+type Page struct { // Page parameters to pass to template
+	Title string
+}
+
+func renderTemplate(w http.ResponseWriter, name string, p *Page)  {
 	log.Println("Template rendering...")
 	template, err := template.ParseFiles(
 		filepath.Join("templates", "base.html"),
@@ -18,29 +22,35 @@ func renderTemplate(w http.ResponseWriter, name string, data any)  {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	err = template.ExecuteTemplate(w, name, data)
+	err = template.ExecuteTemplate(w, name, p)
 	if err != nil {
 		http.Error(w, "Error rendering template", http.StatusInternalServerError)
 		log.Printf("Render error: %v", err)
 	}
 }
 
+func homeHandler(w http.ResponseWriter, r *http.Request) {
+	p := Page{Title:"Home"}
+	renderTemplate(w, "index.html", &p)
+}
+func aboutHandler(w http.ResponseWriter, r *http.Request) {
+	p := Page{Title:"About"}
+	renderTemplate(w, "about.html", &p)
+}
+func projectsHandler(w http.ResponseWriter, r *http.Request) {
+	p := Page{Title:"Projects"}
+	renderTemplate(w, "projects.html", &p)
+}
+func fourohfourHandler(w http.ResponseWriter, r *http.Request) {
+	p := Page{Title:"404 Not Found"}
+	renderTemplate(w, "404.html", &p)
+}
+
 func main() {
-	http.HandleFunc("/", func (w http.ResponseWriter, r *http.Request) {
-		renderTemplate(w, "index.html", map[string]string{"Title": "Home"})
-	})
-	http.HandleFunc("/about", func (w http.ResponseWriter, r *http.Request) {
-		renderTemplate(w, "about.html", map[string]string{"Title": "About"})
-	})
-	http.HandleFunc("/contact", func (w http.ResponseWriter, r *http.Request) {
-		renderTemplate(w, "contact.html", map[string]string{"Title": "Contact Info"})
-	})
-	http.HandleFunc("/projects", func (w http.ResponseWriter, r *http.Request) {
-		renderTemplate(w, "projects.html", map[string]string{"Title": "Projects"})
-	})
-	http.HandleFunc("/404", func (w http.ResponseWriter, r *http.Request) {
-		renderTemplate(w, "404.html", map[string]string{"Title": "404 Not Found"})
-	})
+	http.HandleFunc("/", homeHandler)
+	http.HandleFunc("/about", aboutHandler)
+	http.HandleFunc("/projects", projectsHandler)
+	http.HandleFunc("/404", fourohfourHandler)
 	log.Fatal(http.ListenAndServe(":8080", nil))
 }
 

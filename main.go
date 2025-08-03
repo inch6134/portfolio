@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 	"path/filepath"
 )
 
@@ -25,13 +26,25 @@ type Page struct { // Page parameters to pass to template
 // 	Technologies []string
 // } 
 
+var isDevMode bool = true
+
 // Global map to store pre-parsed template sets
 var templates = make(map[string]*template.Template)
 
 func main() {
+	// check for env variable to set dev mode for deployment
+	if os.Getenv("ENV") == "production" {
+		isDevMode = false
+		log.Println("Running in PRODUCTION mode. Templates will be pre-parsed.")
+	} else {
+		log.Println("Running in DEVELOPMENT mode. Templates will be re-parsed on each request.")
+	}
+
 	// pre-parse templates on server startup
-	if err := parseTemplates(); err != nil {
-		log.Fatalf("Error parsing templates", err)
+	if !isDevMode{
+		if err := parseTemplates(); err != nil {
+			log.Fatalf("Error parsing templates: %v", err)
+		}
 	}
 	
 	http.HandleFunc("/", homeHandler)
@@ -39,10 +52,16 @@ func main() {
 	http.HandleFunc("/projects", projectsHandler)
 	http.HandleFunc("/404", fourohfourHandler)
 
-	log.Println("Server starting on :8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	if !isDevMode {
+		log.Println("Server starting on :3000")
+		log.Fatal(http.ListenAndServe(":3000", nil))
+	} else {
+		log.Println("Server starting on :8080")
+		log.Fatal(http.ListenAndServe(":8080", nil))
+	}
 }
 
+// only called in production
 func parseTemplates() error {
 	baseTemplatePath := filepath.Join("templates", "base.html")
 
@@ -69,13 +88,30 @@ func parseTemplates() error {
 }
 
 func renderTemplate(w http.ResponseWriter, name string, data any)  {
-	tmpl, ok := templates[name]
-	if !ok{
-		http.Error(w, "Template not found: "+name, http.StatusInternalServerError)
-		log.Printf("Error: Template '%s' not found in pre-parsed map.\n", name)
-		return
+	var tmpl *template.Template
+	var err error
+	if isDevMode {
+		// in Dev mode, re-parse templates on each request
+		log.Printf("Dev mode: Re-parsing template '%s'...\n", name)
+		basePath := filepath.Join("templates", "base.html")
+		tmplPath := filepath.Join("templates", name+".html")
+
+		tmpl, err = template.ParseFiles(basePath, tmplPath)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			log.Printf("Dev mode render error: %v\n", err)
+			return
+		}
+	} else {
+		var ok bool
+		tmpl, ok = templates[name]
+		if !ok{
+			http.Error(w, "Template not found: "+name, http.StatusInternalServerError)
+			log.Printf("Error: Template '%s' not found in pre-parsed map.\n", name)
+			return
+		}
 	}
-	err := tmpl.ExecuteTemplate(w, "base.html", data)
+	err = tmpl.ExecuteTemplate(w, "base.html", data)
 	if err != nil {
 		http.Error(w, "Error rendering template", http.StatusInternalServerError)
 		log.Printf("Render error for %s: %v", name, err)

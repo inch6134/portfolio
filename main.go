@@ -24,7 +24,7 @@ type Page struct { // Page parameters to pass to template
 // 	RepoURL string
 // 	Description template.HTML
 // 	Technologies []string
-// } 
+// }
 
 var isDevMode bool = true
 
@@ -41,16 +41,19 @@ func main() {
 	}
 
 	// pre-parse templates on server startup
-	if !isDevMode{
+	if !isDevMode {
 		if err := parseTemplates(); err != nil {
 			log.Fatalf("Error parsing templates: %v", err)
 		}
 	}
 	mux := http.NewServeMux()
-	
+
 	mux.HandleFunc("/", homeHandler)
 	mux.HandleFunc("/about", aboutHandler)
 	mux.HandleFunc("/projects", projectsHandler)
+
+	fileServer := http.FileServer(http.Dir("./static"))
+	mux.Handle("/static/", http.StripPrefix("/static/", fileServer))
 
 	if !isDevMode {
 		log.Println("Server starting on :3000")
@@ -87,7 +90,7 @@ func parseTemplates() error {
 	return nil
 }
 
-func renderTemplate(w http.ResponseWriter, name string, data any)  {
+func renderTemplate(w http.ResponseWriter, name string, data any) {
 	var tmpl *template.Template
 	var err error
 	if isDevMode {
@@ -105,7 +108,7 @@ func renderTemplate(w http.ResponseWriter, name string, data any)  {
 	} else {
 		var ok bool
 		tmpl, ok = templates[name]
-		if !ok{
+		if !ok {
 			http.Error(w, "Template not found: "+name, http.StatusInternalServerError)
 			log.Printf("Error: Template '%s' not found in pre-parsed map.\n", name)
 			return
@@ -118,31 +121,27 @@ func renderTemplate(w http.ResponseWriter, name string, data any)  {
 	}
 }
 
-// func rootHandler(w http.ResponseWriter, r *http.Request) {
-// 	http.Redirect(w, r, "/home", http.StatusFound)
-// }
+//	func rootHandler(w http.ResponseWriter, r *http.Request) {
+//		http.Redirect(w, r, "/home", http.StatusFound)
+//	}
 func homeHandler(w http.ResponseWriter, r *http.Request) {
 	if r.URL.Path != "/" {
 		notFoundHandler(w, r) // If not root and no other route matches, serve 404
- 		return
- 	}
-	p := Page{Title:"Home"}
+		return
+	}
+	p := Page{Title: "Home"}
 	renderTemplate(w, "index", &p)
 }
 func aboutHandler(w http.ResponseWriter, r *http.Request) {
-	p := Page{Title:"About"}
+	p := Page{Title: "About"}
 	renderTemplate(w, "about", &p)
 }
 func projectsHandler(w http.ResponseWriter, r *http.Request) {
-	p := Page{Title:"Projects"}
+	p := Page{Title: "Projects"}
 	renderTemplate(w, "projects", &p)
 }
 func notFoundHandler(w http.ResponseWriter, r *http.Request) {
-	p := Page{Title:"404 Not Found"}
+	p := Page{Title: "404 Not Found"}
 	w.WriteHeader(http.StatusNotFound)
 	renderTemplate(w, "404", &p)
 }
-
-
-
-

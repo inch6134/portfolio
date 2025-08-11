@@ -3,7 +3,7 @@
 {{ end }}
 
 {{ define "content" }}
-<div id="hero" class="h-dvh">
+<div id="hero" class="h-svh">
   <h1 class="text-5xl font-bold mt-2 mb-2 drop-shadow-xs">hi, my name is alex</h1>
   <p>i'm a computer science student studying at the University of Colorado Boulder</p>
   <p>here are some of the tech and tools i'm using</p>
@@ -39,5 +39,53 @@
     </div>
   </div>
 </div>
-<p>This is the next section</p>
+<div id="projects-header" class="flex items-center justify-between gap-4">
+  <div class="w-min whitespace-nowrap">
+    <h1 class="text-2xl">Projects</h1>
+  </div>
+  <div class="inline-block w-full align-middle">
+    <hr class="border-black-900">
+  </div>
+  <div class="w-min whitespace-nowrap">
+    <a href="/projects">
+      See More
+    </a>
+  </div>
+</div>
+<div id="projects" class="grid grid-cols-3 gap-6 justify-around">
+  <div class="grid grid-cols-1">
+    <h3 class="text-lg font-bold justify-self-center">Simple Shell</h3>
+    <div class="border flex flex-col p-4 flex-wrap align-center gap-4">
+      <p class="text-sm text-gray-600">A C-based shell written for a systems programming class. Handles jobs, piping,
+        and signals.</p>
+      <div class="border-t w-full flex items-end mt-auto pt-2">
+        <img src="/static/img/stack.svg" alt="Stack" height="25" width="25">
+        <img class="ml-auto" src="/static/img/cpp.svg" alt="Stack" height="25" width="25">
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1">
+    <h3 class="text-lg font-bold justify-self-center">Convolution Filter Optimizer</h3>
+    <div class="border flex justify-around p-4 flex-wrap align-center gap-4">
+      <p class="text-sm text-gray-600">Optimized C++ image convolution routines using cache-aware and SIMD techniques.
+      </p>
+      <div class="border-t w-full flex items-end mt-auto pt-2">
+        <img src="/static/img/stack.svg" alt="Stack" height="25" width="25">
+        <img class="ml-auto" src="/static/img/cpp.svg" alt="Stack" height="25" width="25">
+      </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-1">
+    <h3 class="text-lg font-bold justify-self-center">Memory Allocator</h3>
+    <div class="border flex justify-around p-4 flex-wrap align-center gap-4">
+      <p class="text-sm text-gray-600">Implemented a memory allocator with segregated free lists and address-ordered
+        insertion.
+      </p>
+      <div class="border-t w-full flex items-end mt-auto pt-2">
+        <img src="/static/img/stack.svg" alt="Stack" height="25" width="25">
+        <img class="ml-auto" src="/static/img/cpp.svg" alt="Stack" height="25" width="25">
+      </div>
+    </div>
+  </div>
+</div>
 {{ end }}

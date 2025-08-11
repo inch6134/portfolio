@@ -1,9 +1,43 @@
 {{ define "index.html" }}
-  {{ template "base.html" . }}
+{{ template "base.html" . }}
 {{ end }}
 
 {{ define "content" }}
-<h2 class="text-xl font-semibold mb-2">Hello!</h2>
-<p>Welcome to my developer portfolio. More coming soon...</p>
+<div id="hero" class="h-dvh">
+  <h1 class="text-5xl font-bold mt-2 mb-2 drop-shadow-xs">hi, my name is alex</h1>
+  <p>i'm a computer science student studying at the University of Colorado Boulder</p>
+  <p>here are some of the tech and tools i'm using</p>
+  <div class="grid grid-cols-3 gap-6 justify-around">
+    <div class="grid grid-cols-1">
+      <img src="/static/img/languages.svg" alt="Languages" height="72" width="72" class="justify-self-center">
+      <div class="border flex justify-around p-4 flex-wrap align-center gap-4">
+        <img src="/static/img/cpp.svg" alt="C++" height="96" width="96">
+        <img src="/static/img/go.svg" alt="Go" height="96" width="96">
+        <img src="/static/img/python.svg" alt="Python" height="96" width="96">
+        <img src="/static/img/html.svg" alt="HTML" height="96" width="96">
+        <img src="/static/img/css.svg" alt="CSS" height="96" width="96">
+        <img src="/static/img/js.svg" alt="JavaScript" height="96" width="96">
+      </div>
+    </div>
+    <div class="grid grid-cols-1">
+      <img src="/static/img/libraries.svg" alt="Frameworks" height="72" width="72" class="justify-self-center">
+      <div class="border flex justify-around p-4 flex-wrap align-center gap-4">
+        <img src="/static/img/flask.svg" alt="Flask" height="96" width="96">
+        <img src="/static/img/numpy.svg" alt="Numpy" height="96" width="96">
+        <img src="/static/img/pandas.svg" alt="Pandas" height="96" width="96">
+        <img src="/static/img/matplotlib.svg" alt="MatPlotLib" height="96" width="96">
+      </div>
+    </div>
+    <div class="grid grid-cols-1">
+      <img src="/static/img/tools.svg" alt="Tools" height="72" width="72" class="justify-self-center">
+      <div class="border flex justify-around p-4 flex-wrap align-center gap-4">
+        <img src="/static/img/git.svg" alt="Git" height="96" width="96">
+        <img src="/static/img/linux.png" alt="Linux" height="96" width="96">
+        <img src="/static/img/bash.svg" alt="Bash" height="96" width="96">
+        <img src="/static/img/postgres.svg" alt="PostGres" height="96" width="96">
+      </div>
+    </div>
+  </div>
+</div>
+<p>This is the next section</p>
 {{ end }}
-

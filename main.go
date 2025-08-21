@@ -51,6 +51,7 @@ func main() {
 	mux.HandleFunc("/", homeHandler)
 	mux.HandleFunc("/about", aboutHandler)
 	mux.HandleFunc("/projects", projectsHandler)
+	mux.HandleFunc("/experiments", experimentsHandler)
 
 	fileServer := http.FileServer(http.Dir("./static"))
 	mux.Handle("/static/", http.StripPrefix("/static/", fileServer))

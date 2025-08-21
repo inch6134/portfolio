@@ -140,6 +140,10 @@ func projectsHandler(w http.ResponseWriter, r *http.Request) {
 	p := Page{Title: "Projects"}
 	renderTemplate(w, "projects", &p)
 }
+func experimentsHandler(w http.ResponseWriter, r *http.Request) {
+	p := Page{Title: "Experiments"}
+	renderTemplate(w, "experiments", &p)
+}
 func notFoundHandler(w http.ResponseWriter, r *http.Request) {
 	p := Page{Title: "404 Not Found"}
 	w.WriteHeader(http.StatusNotFound)

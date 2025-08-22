@@ -6,21 +6,35 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{{ .Title }}</title>
+
   <!-- <script src="https://unpkg.com/htmx.org@1.9.10" defer></script> -->
   <!-- <script src="https://unpkg.com/alpinejs" defer></script> -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+  <style type="text/tailwindcss">
+    @theme {
+      --color-primary: #120A8F;
+      --color-primary-foreground: #FFFFFF;
+      --color-secondary: #FFB400;
+      --color-secondary-foreground: #1C1C1C;
+      --color-background: #FAF9F7;
+      --color-surface: #F0ECE6;
+      --color-text-primary: #1C1C1C;
+      --color-text-secondary: #555555;
+    }
+  </style>
+  <!-- <link rel="stylesheet" href="../static/css/output.css"> -->
 </head>
 
-<body class="bg-gray-100 text-gray-500">
-  <header class="sticky top-0 bg-white shadow">
-    <div class="container mx-auto w-2/3 p-4 flex justify-between items-end">
-      <a href="/">
-        <h1 class="text-2xl font-bold">alex chang</h1>
-      </a>
+<body class="bg-background text-text-primary">
+
+  <header class="sticky top-0 bg-surface text-text-primary shadow z-40">
+    <div class="container mx-auto w-2/3 p-4 flex justify-between items-center">
+      <a class="text-primary text-2xl font-bold" href="/">alex chang</a>
       <nav class="flex items-center gap-6 max-md:hidden">
-        <a href="/about">about</a>
-        <a href="/projects">projects</a>
-        <a href="/experiments">experiments</a>
+        <a class="hover:underline text-text-primary" href="/about">about</a>
+        <a class="hover:underline text-text-primary" href="/projects">projects</a>
+        <a class="hover:underline text-text-primary" href="/experiments">experiments</a>
         <a href="mailto:inch6134@gmail.com"><img src="/static/img/email.svg" height="20" width="20" alt="Email" /></a>
         <a href="https://github.com/inch6134"><img src="/static/img/github.svg" height="20" width="20"
             alt="Github" /></a>
@@ -34,35 +48,40 @@
     {{ block "content" . }}{{ end }}
   </main>
 
-  <footer class="text-sm p-4 text-gray-500">
-    <div class="container mx-auto w-2/3 p-4 border-t">
+  <footer class="text-text-secondary text-sm p-4">
+    <div class="container mx-auto w-2/3 p-4 border-t border-primary">
       <div class="flex flex-col items-start pt-6 pb-10 justify-between gap-10 lg:flex-row lg:gap-0">
         <div class="w-full">
-          <a class="font-inter-text-lg leading-normal md:text-xl lg:text2xl" href="/">alex chang</a>
-          <p class="body-0 mt-3 flex w-full justify-between"><span>a computer science student exploring the exciting
+          <a class="font-inter-text-lg leading-normal md:text-xl lg:text2xl text-text-primary" href="/">alex chang</a>
+          <p class="body-0 mt-3 flex w-full justify-between text-text-secondary"><span>a computer science student
+              exploring the exciting
               world of software development.</span></p>
         </div>
         <div class="flex w-full flex-col gap-4 lg:w-1/2">
-          <h3 class="lg:ml-auto">pages</h3>
+          <h3 class="lg:ml-auto text-text-primary">pages</h3>
           <ul class="grid lg:justify-items-end w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
-            <li class="text-base lg:text-lg"><a class="hover:underline" href="/">home</a></li>
-            <li class="text-base lg:text-lg"><a class="hover:underline" href="/about">about</a></li>
-            <li class="text-base lg:text-lg"><a class="hover:underline" href="/projects">projects</a></li>
-            <li class="text-base lg:text-lg"><a class="hover:underline" href="/experiments">experiments</a></li>
+            <li class="text-base lg:text-lg"><a class="hover:underline text-text-secondary" href="/">home</a></li>
+            <li class="text-base lg:text-lg"><a class="hover:underline text-text-secondary" href="/about">about</a></li>
+            <li class="text-base lg:text-lg"><a class="hover:underline text-text-secondary"
+                href="/projects">projects</a></li>
+            <li class="text-base lg:text-lg"><a class="hover:underline text-text-secondary"
+                href="/experiments">experiments</a></li>
           </ul>
         </div>
         <div class="flex w-full flex-col gap-4 lg:w-1/2">
-          <h3 class="lg:ml-auto">Contacts</h3>
+          <h3 class="lg:ml-auto text-text-primary">Contacts</h3>
           <ul class="grid lg:justify-items-end w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-1">
-            <li class="text-base lg:text-lg"><a class="hover:underline" href="mailto:inch6134@gmail.com">Email</a></li>
-            <li class="text-base lg:text-lg"><a class="hover:underline" href="https://github.com/inch6134">Github</a>
+            <li class="text-base lg:text-lg"><a class="hover:underline text-text-secondary"
+                href="mailto:inch6134@gmail.com">Email</a></li>
+            <li class="text-base lg:text-lg"><a class="hover:underline text-text-secondary"
+                href="https://github.com/inch6134">Github</a>
             </li>
-            <li class="text-base lg:text-lg"><a class="hover:underline"
+            <li class="text-base lg:text-lg"><a class="hover:underline text-text-secondary"
                 href="https://www.linkedin.com/in/alex-in-su-chang/">LinkedIn</a></li>
           </ul>
         </div>
       </div>
-      <div class="container mx-auto w-lg border-t pt-2 flex justify-between items-end">
+      <div class="container mx-auto w-lg border-t border-text-secondary pt-2 flex justify-between items-end">
         <span>Alex Chang, 2025</span>
         <span>Built with Go, TailwindCSS</span>
       </div>

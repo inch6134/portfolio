@@ -4,23 +4,44 @@
 
 {{ define "content" }}
 <div id="hero" //class="/h-svh">
-  <h1 class="text-5xl font-bold mt-2 mb-2 drop-shadow-xs">hi, my name is alex</h1>
+  <h1 class="text-3xl text-primary font-bold mt-2 mb-2 drop-shadow-xs">hi, my name is alex</h1>
   <p>i'm a computer science student studying at the University of Colorado Boulder</p>
   <p>here are some of the tech and tools i'm using</p>
-  <div class="grid grid-cols-3 gap-6 justify-around">
+  <div class="grid grid-cols-3 gap-6 justify-around pt-10 pb-10">
     <div class="grid grid-cols-1">
-      <img src="/static/img/languages.svg" alt="Languages" height="72" width="72" class="justify-self-center">
-      <div class="border flex justify-around p-4 flex-wrap align-center gap-4">
-        <img src="/static/img/cpp.svg" alt="C++" height="96" width="96">
-        <img src="/static/img/go.svg" alt="Go" height="96" width="96">
-        <img src="/static/img/python.svg" alt="Python" height="96" width="96">
-        <img src="/static/img/html.svg" alt="HTML" height="96" width="96">
-        <img src="/static/img/css.svg" alt="CSS" height="96" width="96">
-        <img src="/static/img/js.svg" alt="JavaScript" height="96" width="96">
+      <div class="flex gap-4 items-center justify-self-center">
+        <img src="/static/img/languages.svg" alt="Languages" height="25" width="25">
+        <p class="text-primary text-xl">Languages</p>
+      </div>
+      <div class="border p-4 grid grid-cols-1">
+        <div class="flex gap-4 items-center">
+          <img src="/static/img/cpp.svg" alt="C++" height="22" width="23">
+          <p class="text-primary text-xl">C++</p>
+        </div>
+        <div class="flex gap-4">
+          <img src="/static/img/go.svg" alt="Go" height="25" width="25">
+          <p class="text-primary text-xl">Go</p>
+        </div>
+        <div class="flex gap-4">
+          <img src="/static/img/python.svg" alt="Python" height="25" width="25">
+          <p class="text-primary text-xl">Python</p>
+        </div>
+        <div class="flex gap-4">
+          <img src="/static/img/html.svg" alt="HTML" height="25" width="25">
+          <p class="text-primary text-xl">HTML</p>
+        </div>
+        <div class="flex gap-4">
+          <img src="/static/img/css.svg" alt="CSS" height="25" width="25">
+          <p class="text-primary text-xl">CSS</p>
+        </div>
+        <div class="flex gap-4">
+          <img src="/static/img/js.svg" alt="JavaScript" height="25" width="25">
+          <p class="text-primary text-xl">JavaScript</p>
+        </div>
       </div>
     </div>
     <div class="grid grid-cols-1">
-      <img src="/static/img/libraries.svg" alt="Frameworks" height="72" width="72" class="justify-self-center">
+      <img src="/static/img/libraries.svg" alt="Frameworks" height="50" width="50" class="justify-self-center pb-4">
       <div class="border flex justify-around p-4 flex-wrap align-center gap-4">
         <img src="/static/img/flask.svg" alt="Flask" height="96" width="96">
         <img src="/static/img/numpy.svg" alt="Numpy" height="96" width="96">
@@ -29,7 +50,7 @@
       </div>
     </div>
     <div class="grid grid-cols-1">
-      <img src="/static/img/tools.svg" alt="Tools" height="72" width="72" class="justify-self-center">
+      <img src="/static/img/tools.svg" alt="Tools" height="50" width="50" class="justify-self-center pb-4">
       <div class="border flex justify-around p-4 flex-wrap align-center gap-4">
         <img src="/static/img/git.svg" alt="Git" height="96" width="96">
         <img src="/static/img/linux.png" alt="Linux" height="96" width="96">
@@ -42,7 +63,7 @@
 
 <div id="projects-header" class="flex items-center justify-between gap-4">
   <div class="w-min whitespace-nowrap">
-    <h1 class="text-2xl">Projects</h1>
+    <h1 class="text-xl text-primary font-bold">Projects</h1>
   </div>
   <div class="inline-block w-full align-middle">
     <hr class="border-black-900">
@@ -53,7 +74,7 @@
     </a>
   </div>
 </div>
-<div id="projects" class="grid grid-cols-3 gap-6 justify-around">
+<div id="projects" class="grid grid-cols-3 gap-6 justify-around pb-10 pt-10">
   <div class="grid grid-cols-1">
     <h3 class="text-lg font-bold justify-self-center">Simple Shell</h3>
     <div class="border flex flex-col p-4 flex-wrap align-center gap-4">
@@ -92,7 +113,7 @@
 
 <div id="experiments-header" class="flex items-center justify-between gap-4">
   <div class="w-min whitespace-nowrap">
-    <h1 class="text-2xl">Experiments</h1>
+    <h1 class="text-xl text-primary font-bold">Experiments</h1>
   </div>
   <div class="inline-block w-full align-middle">
     <hr class="border-black-900">
@@ -103,7 +124,7 @@
     </a>
   </div>
 </div>
-<div id="experiments" class="grid grid-cols-3 gap-6 justify-around">
+<div id="experiments" class="grid grid-cols-3 gap-6 justify-around pb-10 pt-10">
   <div class="grid grid-cols-1">
     <h3 class="text-lg font-bold justify-self-center">Simple Shell</h3>
     <div class="border flex flex-col p-4 flex-wrap align-center gap-4">

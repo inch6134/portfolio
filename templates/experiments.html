@@ -9,38 +9,50 @@
 
 <div id="experiments" class="grid grid-cols-3 gap-6 justify-around pb-10 pt-10">
   <div class="grid grid-cols-1">
-    <h3 class="text-lg font-bold justify-self-center">Simple Shell</h3>
-    <div class="border flex flex-col p-4 flex-wrap align-center gap-4">
-      <p class="text-sm text-gray-600">A C-based shell written for a systems programming class. Handles jobs, piping,
-        and signals.</p>
-      <div class="border-t w-full flex items-end mt-auto pt-2">
+    <h3 class="text-lg text-primary font-bold justify-self-center pb-4">Trie-Based Autocomplete Engine</h3>
+    <div class="border flex flex-col p-4 flex-wrap align-center gap-4 min-h-64">
+      <p class="text-md text-secondary-foreground">Efficient autocomplete engine using a trie-based data structure to
+        support fast prefix search.</p>
+      <div class="mt-auto flex gap-2">
+        <img src="/static/img/link.svg" alt="Stack" height="20" width="20">
+        <a class="text-sm" href="https://github.com/inch6134/autocomplete-with-tries">Check it out on Github</a>
+      </div>
+      <div class="border-t w-full flex items-center gap-2 pt-2 min-h-10">
         <img src="/static/img/stack.svg" alt="Stack" height="25" width="25">
-        <img class="ml-auto" src="/static/img/cpp.svg" alt="Stack" height="25" width="25">
+        <img class="ml-auto" src="/static/img/cpp.svg" alt="Go" height="25" width="25">
       </div>
     </div>
   </div>
   <div class="grid grid-cols-1">
-    <h3 class="text-lg font-bold justify-self-center">Convolution Filter Optimizer</h3>
-    <div class="border flex justify-around p-4 flex-wrap align-center gap-4">
-      <p class="text-sm text-gray-600">Optimized C++ image convolution routines using cache-aware and SIMD techniques.
-      </p>
-      <div class="border-t w-full flex items-end mt-auto pt-2">
+    <h3 class="text-lg text-primary font-bold justify-self-center pb-4">CLI RSA Encryption Tool</h3>
+    <div class="border flex flex-col p-4 flex-wrap align-center gap-4 min-h-64">
+      <p class="text-md text-secondary-foreground">RSA key generator and message encoder/decoder with Pollard’s Rho
+        factorization implementation</p>
+      <div class="mt-auto flex gap-2">
+        <img src="/static/img/link.svg" alt="Stack" height="20" width="20">
+        <a class="text-sm" href="https://github.com/inch6134/rsa-cli">Check it out on Github</a>
+      </div>
+      <div class="border-t w-full flex items-center gap-2 pt-2 min-h-10">
         <img src="/static/img/stack.svg" alt="Stack" height="25" width="25">
-        <img class="ml-auto" src="/static/img/cpp.svg" alt="Stack" height="25" width="25">
+        <img class="ml-auto" src="/static/img/python.svg" alt="Go" height="25" width="25">
       </div>
     </div>
   </div>
   <div class="grid grid-cols-1">
-    <h3 class="text-lg font-bold justify-self-center">Memory Allocator</h3>
-    <div class="border flex justify-around p-4 flex-wrap align-center gap-4">
-      <p class="text-sm text-gray-600">Implemented a memory allocator with segregated free lists and address-ordered
-        insertion.
-      </p>
-      <div class="border-t w-full flex items-end mt-auto pt-2">
+    <h3 class="text-lg text-primary font-bold justify-self-center pb-4">Gorillas Browser Game</h3>
+    <div class="border flex flex-col p-4 flex-wrap align-center gap-4 min-h-64">
+      <p class="text-md text-secondary-foreground">Browser-based artillery game inspired by the classic QBasic Gorillas,
+        built with JavaScript and HTML Canvas.</p>
+      <div class="mt-auto flex gap-2">
+        <img src="/static/img/link.svg" alt="Stack" height="20" width="20">
+        <a class="text-sm" href="https://github.com/inch6134/gorillas_js">Check it out on Github</a>
+      </div>
+      <div class="border-t w-full flex items-center gap-2 pt-2 min-h-10">
         <img src="/static/img/stack.svg" alt="Stack" height="25" width="25">
-        <img class="ml-auto" src="/static/img/cpp.svg" alt="Stack" height="25" width="25">
+        <img class="ml-auto" src="/static/img/js.svg" alt="Go" height="25" width="25">
       </div>
     </div>
   </div>
 </div>
+
 {{ end }}

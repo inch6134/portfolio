@@ -5,8 +5,26 @@
 {{ define "content" }}
 <div id="hero" //class="/h-svh">
   <h1 class="text-3xl text-primary font-bold mt-2 mb-2 drop-shadow-xs">hi, my name is alex</h1>
-  <p>i'm a computer science student studying at the University of Colorado Boulder</p>
+  <p>I’m an early-career software engineer focused on building reliable systems and expanding my skills across new
+    technologies.</p>
 </div>
+<br>
+<h2 class="text-2xl text-primary font-semibold mb-2">about me</h2>
+<p>
+  I'm a computer science student and former investment banking analyst making the transition into software engineering.
+  As an early-career developer, I’m especially interested in building reliable systems and expanding my skills across
+  new technologies.
+  My background in finance taught me to solve complex problems under pressure, analyze systems critically, and pay close
+  attention to details — strengths I now bring to software engineering.
+</p>
+<br>
+<p>
+  I’m particularly drawn to backend and systems programming, where efficiency and reliability matter. At the same time,
+  I’m open to full-stack and front-end roles that let me contribute to meaningful projects, learn new technologies, and
+  grow as a developer.
+</p>
+<br>
+<p>Check out my projects below ↴</p>
 
 <div id="projects-header" class="flex items-center justify-between gap-4 pt-10">
   <div class="w-min whitespace-nowrap">
@@ -21,15 +39,17 @@
     </a>
   </div>
 </div>
+
 <div id="projects" class="grid grid-cols-3 gap-6 justify-around pb-10 pt-10">
   <div class="grid grid-cols-1">
-    <h3 class="text-lg text-primary font-bold justify-self-center pb-4">Segregated Free List-Based Malloc</h3>
+    <h3 class="text-lg text-primary font-bold justify-self-center pb-4">Custom Memory Allocator</h3>
     <div class="border flex flex-col p-4 flex-wrap align-center gap-4 min-h-64">
-      <p class="text-md text-secondary-foreground">Custom dynamic memory allocator based on a segregated free list.
+      <p class="text-md text-secondary-foreground">Custom dynamic memory allocator with segregated free list and
+        explicit free list implementations.
       </p>
       <div class="mt-auto flex gap-2">
         <img src="/static/img/link.svg" alt="Stack" height="20" width="20">
-        <a href="https://github.com/inch6134/seg-list-malloc">Check it out on Github</a>
+        <a class="text-sm" href="https://github.com/inch6134/seg-list-malloc">Check it out on Github</a>
       </div>
       <div class="border-t w-full flex items-center pt-2 min-h-10">
         <img src="/static/img/stack.svg" alt="Stack" height="25" width="25">
@@ -44,7 +64,7 @@
         built-in commands.</p>
       <div class="mt-auto flex gap-2">
         <img src="/static/img/link.svg" alt="Stack" height="20" width="20">
-        <a href="https://github.com/inch6134/tiny-shell">Check it out on Github</a>
+        <a class="text-sm" href="https://github.com/inch6134/tiny-shell">Check it out on Github</a>
       </div>
       <div class="border-t w-full flex items-center pt-2 min-h-10">
         <img src="/static/img/stack.svg" alt="Stack" height="25" width="25">
@@ -59,7 +79,7 @@
         Tailwind CSS — minimal, fast, and dependency-light.</p>
       <div class="mt-auto flex gap-2">
         <img src="/static/img/link.svg" alt="Stack" height="20" width="20">
-        <a href="https://github.com/inch6134/portfolio">Check it out on Github</a>
+        <a class="text-sm" href="https://github.com/inch6134/portfolio">Check it out on Github</a>
       </div>
       <div class="border-t w-full flex items-center gap-2 pt-2 min-h-10">
         <img src="/static/img/stack.svg" alt="Stack" height="25" width="25">
@@ -83,6 +103,7 @@
     </a>
   </div>
 </div>
+
 <div id="experiments" class="grid grid-cols-3 gap-6 justify-around pb-10 pt-10">
   <div class="grid grid-cols-1">
     <h3 class="text-lg text-primary font-bold justify-self-center pb-4">Trie-Based Autocomplete Engine</h3>
@@ -91,7 +112,7 @@
         support fast prefix search.</p>
       <div class="mt-auto flex gap-2">
         <img src="/static/img/link.svg" alt="Stack" height="20" width="20">
-        <a href="https://github.com/inch6134/autocomplete-with-tries">Check it out on Github</a>
+        <a class="text-sm" href="https://github.com/inch6134/autocomplete-with-tries">Check it out on Github</a>
       </div>
       <div class="border-t w-full flex items-center gap-2 pt-2 min-h-10">
         <img src="/static/img/stack.svg" alt="Stack" height="25" width="25">
@@ -106,7 +127,7 @@
         factorization implementation</p>
       <div class="mt-auto flex gap-2">
         <img src="/static/img/link.svg" alt="Stack" height="20" width="20">
-        <a href="https://github.com/inch6134/rsa-cli">Check it out on Github</a>
+        <a class="text-sm" href="https://github.com/inch6134/rsa-cli">Check it out on Github</a>
       </div>
       <div class="border-t w-full flex items-center gap-2 pt-2 min-h-10">
         <img src="/static/img/stack.svg" alt="Stack" height="25" width="25">
@@ -121,7 +142,7 @@
         built with JavaScript and HTML Canvas.</p>
       <div class="mt-auto flex gap-2">
         <img src="/static/img/link.svg" alt="Stack" height="20" width="20">
-        <a href="https://github.com/inch6134/gorillas_js">Check it out on Github</a>
+        <a class="text-sm" href="https://github.com/inch6134/gorillas_js">Check it out on Github</a>
       </div>
       <div class="border-t w-full flex items-center gap-2 pt-2 min-h-10">
         <img src="/static/img/stack.svg" alt="Stack" height="25" width="25">

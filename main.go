@@ -49,7 +49,6 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", homeHandler)
-	mux.HandleFunc("/about", aboutHandler)
 	mux.HandleFunc("/projects", projectsHandler)
 	mux.HandleFunc("/experiments", experimentsHandler)
 
@@ -71,7 +70,6 @@ func parseTemplates() error {
 
 	contentTemplates := []string{
 		"index.html",
-		"about.html",
 		"projects.html",
 		"404.html",
 	}
@@ -132,10 +130,6 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	p := Page{Title: "Home"}
 	renderTemplate(w, "index", &p)
-}
-func aboutHandler(w http.ResponseWriter, r *http.Request) {
-	p := Page{Title: "About"}
-	renderTemplate(w, "about", &p)
 }
 func projectsHandler(w http.ResponseWriter, r *http.Request) {
 	p := Page{Title: "Projects"}

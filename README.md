@@ -1,4 +1,3 @@
-````markdown
 # My Developer Portfolio
 
 A minimal, personal portfolio website built with Go and Tailwind CSS. It showcases my projects, experiments, and coding work in a clean, server-rendered interface using Go’s standard library and HTML templates. Designed to be simple, responsive, and easy to explore.

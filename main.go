@@ -71,6 +71,7 @@ func parseTemplates() error {
 	contentTemplates := []string{
 		"index.html",
 		"projects.html",
+		"experiments.html",
 		"404.html",
 	}
 

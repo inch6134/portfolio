@@ -13,6 +13,7 @@ Thumbs.db
 
 # Generated files
 *.out
+main
 
 # Optional: ignore resume unless version-controlled
 .github/

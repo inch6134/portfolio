@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"log"
 	"net/http"
@@ -51,6 +52,7 @@ func main() {
 	mux.HandleFunc("/", homeHandler)
 	mux.HandleFunc("/projects", projectsHandler)
 	mux.HandleFunc("/experiments", experimentsHandler)
+	mux.HandleFunc("/keep-alive", keepAliveHandler)
 
 	fileServer := http.FileServer(http.Dir("./static"))
 	mux.Handle("/static/", http.StripPrefix("/static/", fileServer))
@@ -129,7 +131,7 @@ func homeHandler(w http.ResponseWriter, r *http.Request) {
 		notFoundHandler(w, r) // If not root and no other route matches, serve 404
 		return
 	}
-	p := Page{Title: "Home"}
+	p := Page{Title: "Alex Chang"}
 	renderTemplate(w, "index", &p)
 }
 func projectsHandler(w http.ResponseWriter, r *http.Request) {
@@ -144,4 +146,8 @@ func notFoundHandler(w http.ResponseWriter, r *http.Request) {
 	p := Page{Title: "404 Not Found"}
 	w.WriteHeader(http.StatusNotFound)
 	renderTemplate(w, "404", &p)
+}
+func keepAliveHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/plain")
+	fmt.Fprintf(w, "Keep Alive Success")
 }
